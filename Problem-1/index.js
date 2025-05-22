@@ -8,6 +8,14 @@ app.use(express.json());
 
 app.use('/stock',StockRoute);
 
+mongoose.connect('mongodb://localhost:27017/stock')
+.then(() => {
+    console.log("Database connected");
+})
+.catch((err) => {
+    console.log("MongoDB connection error: "+ err.message);
+})
+
 app.listen(5000,()=>[
     console.log("Server is running on port 5000")
 ]);
